@@ -48,8 +48,7 @@ class Onboarding1 extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 15.0),
               child: Image(
-                image: AssetImage(
-                    '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding1.png'),
+                image: AssetImage('assets/images/onboarding/onboarding1.png'),
                 fit: BoxFit.cover,
               ),
             ),

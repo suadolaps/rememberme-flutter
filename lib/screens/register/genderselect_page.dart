@@ -28,8 +28,7 @@ class _GenderSelectState extends State<GenderSelect> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                  '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/register/bg-gender.png'),
+              image: AssetImage('assets/images/register/bg-gender.png'),
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -69,8 +68,8 @@ class _GenderSelectState extends State<GenderSelect> {
                         cardChild: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Image(
-                            image: AssetImage(
-                                '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/register/male.png'),
+                            image:
+                                AssetImage('assets/images/register/male.png'),
                           ),
                         ),
                       ),
@@ -88,8 +87,8 @@ class _GenderSelectState extends State<GenderSelect> {
                         cardChild: Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: Image(
-                            image: AssetImage(
-                                '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/register/female.png'),
+                            image:
+                                AssetImage('assets/images/register/female.png'),
                           ),
                         ),
                       ),

@@ -84,7 +84,7 @@ class _Onboarding2State extends State<Onboarding2> {
                       children: <Widget>[
                         Image(
                           image: AssetImage(
-                              '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding2.png'),
+                              'assets/images/onboarding/onboarding2.png'),
                           fit: BoxFit.fill,
                         ),
                         Padding(
@@ -119,7 +119,7 @@ class _Onboarding2State extends State<Onboarding2> {
                       children: <Widget>[
                         Image(
                           image: AssetImage(
-                              '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding3.png'),
+                              'assets/images/onboarding/onboarding3.png'),
                           fit: BoxFit.fill,
                         ),
                         Padding(
@@ -154,7 +154,7 @@ class _Onboarding2State extends State<Onboarding2> {
                       children: <Widget>[
                         Image(
                           image: AssetImage(
-                              '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding4.png'),
+                              'assets/images/onboarding/onboarding4.png'),
                           fit: BoxFit.fill,
                         ),
                         Padding(
@@ -189,7 +189,7 @@ class _Onboarding2State extends State<Onboarding2> {
                       children: <Widget>[
                         Image(
                           image: AssetImage(
-                              '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding5.png'),
+                              'assets/images/onboarding/onboarding5.png'),
                           fit: BoxFit.fill,
                           height: 400.0,
                         ),
@@ -227,7 +227,7 @@ class _Onboarding2State extends State<Onboarding2> {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage(
-                          '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/onboarding/onboarding6.png',
+                          'assets/images/onboarding/onboarding6.png',
                         ),
                         alignment: Alignment.topCenter,
                       ),

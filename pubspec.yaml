@@ -25,7 +25,11 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
+    - assets/images/onboarding/
+    - assets/images/register/
+    - assets/images/login/
+    - assets/images/resources/
+    - assets/images/themes/
 
 
   fonts:

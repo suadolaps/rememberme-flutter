@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/login/login_screen.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
 import 'package:remember_me/screens/onboarding/onboarding_2.dart';
 import 'package:remember_me/screens/register/genderselect_page.dart';
@@ -19,6 +20,7 @@ class RememberMe extends StatelessWidget {
         Onboarding1.id: (context) => Onboarding1(),
         Onboarding2.id: (context) => Onboarding2(),
         GenderSelect.id: (context) => GenderSelect(),
+        LoginScreen.id: (context) => LoginScreen(),
       },
     );
   }

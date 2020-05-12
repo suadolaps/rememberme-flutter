@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remember_me/screens/register/genderselect_page.dart';
+import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 
@@ -30,7 +31,7 @@ class _Onboarding2State extends State<Onboarding2> {
       height: 8.0,
       width: 8.0,
       decoration: BoxDecoration(
-        color: isActive ? Color(0xFF0D47B8) : Color(0xFF94A0AA),
+        color: isActive ? kPrimaryBlue : kTertiaryGrey,
         borderRadius: BorderRadius.all(
           Radius.circular(12),
         ),

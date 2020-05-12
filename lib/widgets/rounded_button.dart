@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/utilities/colours.dart';
 
 class RoundedButton extends StatelessWidget {
   RoundedButton({@required this.buttonTitle, @required this.onPressed});
@@ -11,7 +12,7 @@ class RoundedButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
-        color: Color(0xFF0D47B8),
+        color: kPrimaryBlue,
         borderRadius: BorderRadius.circular(30.0),
         elevation: 5.0,
         child: MaterialButton(
@@ -21,7 +22,7 @@ class RoundedButton extends StatelessWidget {
           child: Text(
             buttonTitle,
             style: TextStyle(
-              color: Colors.white,
+              color: kSecondaryWhite,
               fontWeight: FontWeight.w800,
               fontSize: 20.0,
             ),

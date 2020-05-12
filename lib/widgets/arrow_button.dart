@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/utilities/colours.dart';
 
 class ArrowButton extends StatelessWidget {
   ArrowButton({@required this.onPress});
@@ -16,8 +17,8 @@ class ArrowButton extends StatelessWidget {
         width: 80.0,
         child: FittedBox(
           child: FloatingActionButton(
-            backgroundColor: Color(0xFFE5ECFC),
-            splashColor: Color(0xFFE5ECFC),
+            backgroundColor: kTertiaryBlue,
+            splashColor: kTertiaryBlue,
             elevation: 0.0,
             highlightElevation: 2.0,
             child: Image(

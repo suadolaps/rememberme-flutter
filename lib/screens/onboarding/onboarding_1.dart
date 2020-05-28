@@ -47,13 +47,11 @@ class Onboarding1 extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Image(
-                  image: AssetImage('assets/images/onboarding/onboarding1.png'),
-                  fit: BoxFit.fitHeight,
-                ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Image(
+                image: AssetImage('assets/images/onboarding/onboarding1.png'),
+                fit: BoxFit.fitHeight,
               ),
             ),
             Expanded(

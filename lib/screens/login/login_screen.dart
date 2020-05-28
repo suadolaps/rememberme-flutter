@@ -4,8 +4,23 @@ import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 import 'package:remember_me/utilities/constants.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String email;
+  String _password;
+  bool hidePassword = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      hidePassword = !hidePassword;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +45,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: FlatButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     child: Row(
@@ -60,10 +75,9 @@ class LoginScreen extends StatelessWidget {
                 Image(
                   image: AssetImage('assets/images/login/login.png'),
                   fit: BoxFit.fitWidth,
-                  height: 160.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 24.0),
                   child: Container(
                     alignment: Alignment.topLeft,
                     child: Text(
@@ -138,28 +152,43 @@ class LoginScreen extends StatelessWidget {
           size: 20.0,
         ),
       ),
+      onChanged: (value) {
+        email = value;
+      },
     );
   }
 
   Widget passwordField() {
     return TextField(
-      obscureText: true,
+      obscureText: hidePassword,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.all(0.0),
-        hintText: 'Password',
-        labelText: 'Password',
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            width: 0.5,
-            color: kPrimaryBlue,
+          contentPadding: EdgeInsets.all(0.0),
+          hintText: 'Password',
+          labelText: 'Password',
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(
+              width: 0.5,
+              color: kPrimaryBlue,
+            ),
           ),
-        ),
-        prefixIcon: Icon(
-          Icons.lock_outline,
-          color: kPrimaryBlue,
-          size: 20.0,
-        ),
-      ),
+          prefixIcon: Icon(
+            Icons.lock_outline,
+            color: kPrimaryBlue,
+            size: 20.0,
+          ),
+          suffixIcon: GestureDetector(
+            onTap: () {
+              _togglePasswordVisibility();
+            },
+            child: Icon(
+              hidePassword ? Icons.visibility_off : Icons.visibility,
+              color: hidePassword ? kSecondaryGrey : kPrimaryBlue,
+              size: 20.0,
+            ),
+          )),
+      onChanged: (value) {
+        _password = value;
+      },
     );
   }
 }

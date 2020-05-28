@@ -55,6 +55,7 @@ class _Onboarding2State extends State<Onboarding2> {
                     _currentPage != _numPages
                         ? _pageController.jumpToPage(5)
                         : null;
+                    // TODO: hide button if on last page
                   });
                 },
                 child: Text(

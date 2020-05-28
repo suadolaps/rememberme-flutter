@@ -21,6 +21,13 @@ const kLoginTitleStyle = TextStyle(
   height: 1.4,
 );
 
+const kTitleStyle = TextStyle(
+  color: kPrimaryBlue,
+  fontWeight: FontWeight.w600,
+  fontSize: 28.0,
+  height: 1.5,
+);
+
 const kLoginBodyStyle = TextStyle(
   color: kPrimaryBlack,
   fontSize: 17.0,

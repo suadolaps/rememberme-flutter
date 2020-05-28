@@ -22,7 +22,7 @@ class ArrowButton extends StatelessWidget {
             elevation: 0.0,
             highlightElevation: 2.0,
             child: Image(
-              width: 35.0,
+              width: 30.0,
               image: AssetImage(
                   '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/register/arrow.png'),
             ),

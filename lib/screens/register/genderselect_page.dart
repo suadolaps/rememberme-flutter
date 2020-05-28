@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/widgets/gender_card.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
 
@@ -21,7 +22,9 @@ class _GenderSelectState extends State<GenderSelect> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: ArrowButton(
-        onPress: () {},
+        onPress: () {
+          Navigator.of(context).pushNamed(NameInput.id);
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),

@@ -54,7 +54,7 @@ class NameInput extends StatelessWidget {
                   ),
                   child: Text(
                     'What\'s your name?',
-                    style: kTitleStyle,
+                    style: kMainTitleStyle,
                   ),
                 ),
                 Padding(

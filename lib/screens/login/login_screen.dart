@@ -26,10 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 20.0,
-        ),
+        padding: const EdgeInsets.all(20.0),
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -40,93 +37,97 @@ class _LoginScreenState extends State<LoginScreen> {
               alignment: Alignment.bottomCenter,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
-                  child: FlatButton(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: kPrimaryBlue,
-                          size: 16.0,
-                        ),
-                        Text(
-                          'BACK',
-                          style: kTopButtonStyle,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Onboarding1(),
-                        ),
-                      );
-                    },
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: FlatButton(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.arrow_back_ios,
+                        color: kPrimaryBlue,
+                        size: 16.0,
+                      ),
+                      Text(
+                        'BACK',
+                        style: kTopButtonStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
                   ),
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Onboarding1(),
+                      ),
+                    );
+                  },
                 ),
-                Image(
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Image(
                   image: AssetImage('assets/images/login/login.png'),
                   fit: BoxFit.fitWidth,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 24.0),
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Welcome back',
-                      style: kLoginTitleStyle,
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 12.0,
-                    right: 15.0,
-                  ),
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Enter your email address and password to sign in and continue on your journey.',
-                      style: kLoginBodyStyle,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 25.0,
-                    bottom: 15.0,
-                  ),
-                  child: emailField(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0),
-                  child: passwordField(),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 30.0),
-                ),
-                RoundedButton(
-                  buttonTitle: 'LOG IN',
-                  onPressed: () {},
-                ),
-                FlatButton(
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24.0, left: 20.0),
+                child: Container(
+                  alignment: Alignment.topLeft,
                   child: Text(
-                    'Forgot Password'.toUpperCase(),
-                    style: kBottomButtonStyle,
+                    'Welcome back',
+                    style: kLoginTitleStyle,
+                    textAlign: TextAlign.left,
                   ),
-                  onPressed: () {},
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 12.0,
+                  right: 15.0,
+                  left: 20.0,
+                ),
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Enter your email address and password to sign in and continue on your journey.',
+                    style: kLoginBodyStyle,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                  vertical: 15.0,
+                ),
+                child: emailField(),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15.0,
+                  horizontal: 20.0,
+                ),
+                child: passwordField(),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 30.0),
+              ),
+              RoundedButton(
+                buttonTitle: 'LOG IN',
+                onPressed: () {},
+              ),
+              FlatButton(
+                child: Text(
+                  'Forgot Password'.toUpperCase(),
+                  style: kBottomButtonStyle,
+                ),
+                onPressed: () {},
+              ),
+            ],
           ),
         ),
       ),

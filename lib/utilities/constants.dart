@@ -21,7 +21,7 @@ const kLoginTitleStyle = TextStyle(
   height: 1.4,
 );
 
-const kTitleStyle = TextStyle(
+const kMainTitleStyle = TextStyle(
   color: kPrimaryBlue,
   fontWeight: FontWeight.w600,
   fontSize: 28.0,
@@ -49,6 +49,12 @@ const kBottomButtonStyle = TextStyle(
   color: kPrimaryBlue,
   fontSize: 16.0,
   fontWeight: FontWeight.w800,
+);
+
+const kInputTextStyle = TextStyle(
+  fontSize: 17.0,
+  height: 1.5,
+  color: kPrimaryBlack,
 );
 
 const kOnboardingAlignment = TextAlign.center;

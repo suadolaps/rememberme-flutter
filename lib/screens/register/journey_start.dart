@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/register/intention/intention.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
 
@@ -13,7 +14,9 @@ class JourneyStart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: ArrowButton(
-        onPress: () {},
+        onPress: () {
+          Navigator.pushNamed(context, Intention.id);
+        },
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -45,8 +48,8 @@ class JourneyStart extends StatelessWidget {
                     top: 40.0,
                   ),
                   child: Text(
-                    'Let\'s get this journey started ${name}!',
-                    style: kTitleStyle,
+                    'Let\'s get this journey started $name!',
+                    style: kMainTitleStyle,
                     textAlign: TextAlign.center,
                   ),
                 ),

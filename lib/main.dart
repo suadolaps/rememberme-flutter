@@ -3,6 +3,8 @@ import 'package:remember_me/screens/login/login_screen.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
 import 'package:remember_me/screens/onboarding/onboarding_2.dart';
 import 'package:remember_me/screens/register/genderselect_page.dart';
+import 'package:remember_me/screens/register/intention/add_intention.dart';
+import 'package:remember_me/screens/register/intention/intention.dart';
 import 'package:remember_me/screens/register/journey_start.dart';
 import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/screens/splash_page.dart';
@@ -25,6 +27,8 @@ class RememberMe extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         NameInput.id: (context) => NameInput(),
         JourneyStart.id: (context) => JourneyStart(),
+        Intention.id: (context) => Intention(),
+        AddIntention.id: (context) => AddIntention(),
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/register/genderselect_page.dart';
 import 'package:remember_me/screens/register/journey_start.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/utilities/colours.dart';
@@ -19,7 +20,7 @@ class NameInput extends StatelessWidget {
             MaterialPageRoute(
                 builder: (context) => JourneyStart(
                       name: name,
-                    )),
+                    ),),
           );
         },
       ),
@@ -33,39 +34,69 @@ class NameInput extends StatelessWidget {
             ),
           ),
           width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 40.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: FlatButton(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.arrow_back_ios,
+                        color: kPrimaryBlue,
+                        size: 16.0,
+                      ),
+                      Text(
+                        'BACK',
+                        style: kTopButtonStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => GenderSelect(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+                SizedBox(height: 180,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0,
+                    right: 20.0,),
+                  child: Container(
                   child: Image(
                     image: AssetImage('assets/images/register/female.png'),
                     width: 150.0,
                   ),
+              ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 50.0,
-                  ),
-                  child: Text(
-                    'What\'s your name?',
-                    style: kMainTitleStyle,
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 50.0,
+                  left: 20.0,
+                  right: 20.0,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                    bottom: 15.0,
-                  ),
-                  child: nameField(),
+                child: Text(
+                  'What\'s your name?',
+                  style: kMainTitleStyle,
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 20.0,
+                  bottom: 15.0,
+                  left: 20.0,
+                  right: 20.0,
+                ),
+                child: nameField(),
+              ),
+            ],
           ),
         ),
       ),

@@ -5,7 +5,7 @@ description:  A new Flutter application that helps Muslims to develop and nurtur
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -15,6 +15,7 @@ dependencies:
   bloc: ^3.0.0
   flutter_bloc: ^3.2.0
   auto_size_text: ^2.1.0
+  email_validator: ^1.0.0
 
 dev_dependencies:
   flutter_test:

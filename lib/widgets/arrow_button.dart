@@ -24,7 +24,7 @@ class ArrowButton extends StatelessWidget {
             child: Image(
               width: 30.0,
               image: AssetImage(
-                  '/Users/suadkamardeen/Suad/Developer/AndroidStudioProjects/remember_me/assets/images/register/arrow.png'),
+                  'assets/images/register/arrow.png'),
             ),
             onPressed: onPress,
           ),

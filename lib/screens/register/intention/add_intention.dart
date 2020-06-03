@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/register/user_detail.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 
@@ -99,7 +100,9 @@ class AddIntention extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 10.0),
                 child: RoundedButton(
                   buttonTitle: 'DONE',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(UserDetail.id);
+                  },
                 ),
               ),
             ],

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/onboarding/onboarding_2.dart';
 import 'package:remember_me/screens/register/name_input_page.dart';
+import 'package:remember_me/utilities/colours.dart';
+import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/gender_card.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
+import 'package:remember_me/models/gender.dart';
 
-enum Gender {
-  male,
-  female,
-}
 
 class GenderSelect extends StatefulWidget {
   static const String id = 'gender_select_screen';
@@ -36,9 +36,38 @@ class _GenderSelectState extends State<GenderSelect> {
             ),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              Padding(
+                  padding: const EdgeInsets.only(top: 25.0),
+                  child: FlatButton(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.arrow_back_ios,
+                          color: kPrimaryBlue,
+                          size: 16.0,
+                        ),
+                        Text(
+                          'BACK',
+                          style: kTopButtonStyle,
+                          textAlign: TextAlign.left,
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Onboarding2(),
+                        ),
+                      );
+                    },
+                  )
+              ),
+              SizedBox(height: 180,),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10.0),
                 child: Text(

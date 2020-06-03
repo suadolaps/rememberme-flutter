@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remember_me/screens/register/intention/add_intention.dart';
+import 'package:remember_me/screens/register/user_detail.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 
@@ -75,7 +76,9 @@ class Intention extends StatelessWidget {
                         'SKIP'.toUpperCase(),
                         style: kBottomButtonStyle,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(UserDetail.id);
+                      },
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
                   ],

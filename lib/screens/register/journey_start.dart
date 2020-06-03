@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remember_me/screens/register/intention/intention.dart';
+import 'package:remember_me/screens/register/name_input_page.dart';
+import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
 
@@ -28,33 +30,62 @@ class JourneyStart extends StatelessWidget {
             ),
           ),
           width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20.0,
-              vertical: 40.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: FlatButton(
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.arrow_back_ios,
+                        color: kPrimaryBlue,
+                        size: 16.0,
+                      ),
+                      Text(
+                        'BACK',
+                        style: kTopButtonStyle,
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NameInput(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(height: 180,),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                ),
+                child: Container(
                   child: Image(
                     image: AssetImage('assets/images/register/female.png'),
                     width: 180.0,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 40.0,
-                  ),
-                  child: Text(
-                    'Let\'s get this journey started $name!',
-                    style: kMainTitleStyle,
-                    textAlign: TextAlign.center,
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 40.0,
+                  left: 20.0,
+                  right: 20.0,
                 ),
-              ],
-            ),
+                child: Text(
+                  'Let\'s get this journey started $name!',
+                  style: kMainTitleStyle,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
           ),
         ),
       ),

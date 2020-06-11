@@ -8,6 +8,7 @@ import 'package:remember_me/screens/register/intention/intention.dart';
 import 'package:remember_me/screens/register/journey_start.dart';
 import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/screens/register/user_detail.dart';
+import 'package:remember_me/screens/register/verify_email.dart';
 import 'package:remember_me/screens/splash_page.dart';
 
 void main() => runApp(RememberMe());
@@ -31,6 +32,7 @@ class RememberMe extends StatelessWidget {
         Intention.id: (context) => Intention(),
         AddIntention.id: (context) => AddIntention(),
         UserDetail.id: (context) => UserDetail(),
+        VerifyEmail.id: (context) => VerifyEmail(),
       },
     );
   }

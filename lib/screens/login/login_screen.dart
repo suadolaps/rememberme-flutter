@@ -7,6 +7,7 @@ import 'package:remember_me/blocs/email/login_screen_state.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
+import 'package:remember_me/widgets/top_button.dart';
 import 'package:remember_me/utilities/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -67,22 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 30.0),
-                    child: FlatButton(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      child: Row(
-                        children: <Widget>[
-                          Icon(
-                            Icons.arrow_back_ios,
-                            color: kPrimaryBlue,
-                            size: 16.0,
-                          ),
-                          Text(
-                            'BACK',
-                            style: kTopButtonStyle,
-                            textAlign: TextAlign.left,
-                          ),
-                        ],
-                      ),
+                    child: TopButton(
+                      buttonName: 'BACK',
                       onPressed: () {
                         Navigator.pop(
                           context,
@@ -90,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => Onboarding1(),
                           ),
                         );
-                      },
+                      }
                     ),
                   ),
                   Padding(
@@ -254,3 +241,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+

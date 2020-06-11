@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:remember_me/screens/register/intention/intention.dart';
 import 'package:remember_me/screens/register/name_input_page.dart';
-import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
+import 'package:remember_me/widgets/top_button.dart';
 
 class JourneyStart extends StatelessWidget {
   static const String id = 'journey_start_screen';
@@ -35,22 +35,8 @@ class JourneyStart extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 30.0),
-                child: FlatButton(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: kPrimaryBlue,
-                        size: 16.0,
-                      ),
-                      Text(
-                        'BACK',
-                        style: kTopButtonStyle,
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
+                child: TopButton(
+                  buttonName: 'BACK',
                   onPressed: () {
                     Navigator.pop(
                       context,

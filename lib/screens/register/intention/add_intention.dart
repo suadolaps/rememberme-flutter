@@ -5,6 +5,7 @@ import 'package:remember_me/utilities/constants.dart';
 
 import 'package:remember_me/screens/register/intention/intention.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
+import 'package:remember_me/widgets/top_button.dart';
 
 class AddIntention extends StatelessWidget {
   static const String id = 'add_intention';
@@ -26,22 +27,8 @@ class AddIntention extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 30.0),
-                child: FlatButton(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: kPrimaryBlue,
-                        size: 16.0,
-                      ),
-                      Text(
-                        'BACK',
-                        style: kTopButtonStyle,
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
+                child: TopButton(
+                  buttonName: 'BACK',
                   onPressed: () {
                     Navigator.pop(
                       context,
@@ -120,7 +107,7 @@ class AddIntention extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(0.0),
         border: InputBorder.none,
-        hintText: 'Start your intention in the name of Allah...',
+        hintText: 'Ya Allah I intend to begin this journey...',
       ),
       cursorColor: kPrimaryBlue,
       toolbarOptions: ToolbarOptions(

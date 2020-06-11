@@ -1,9 +1,12 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
+import 'package:remember_me/screens/register/intention/intention.dart';
+import 'package:remember_me/screens/register/verify_email.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 import 'package:remember_me/utilities/constants.dart';
+import 'package:remember_me/widgets/top_button.dart';
 
 class UserDetail extends StatefulWidget {
   static const String id = 'user_detail_screen';
@@ -44,27 +47,13 @@ class _UserDetailState extends State<UserDetail> {
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 30.0),
-                  child: FlatButton(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.arrow_back_ios,
-                          color: kPrimaryBlue,
-                          size: 16.0,
-                        ),
-                        Text(
-                          'BACK',
-                          style: kTopButtonStyle,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
+                  child: TopButton(
+                    buttonName: 'BACK',
                     onPressed: () {
                       Navigator.pop(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Onboarding1(),
+                          builder: (context) => Intention(),
                         ),
                       );
                     },
@@ -114,6 +103,12 @@ class _UserDetailState extends State<UserDetail> {
                     vertical: 15.0,),
                   child: passwordInput(),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 15.0,),
+                  child: passwordInput()
+                ),
                 Container(
                   margin: EdgeInsets.only(top: 30.0),
                 ),
@@ -123,7 +118,7 @@ class _UserDetailState extends State<UserDetail> {
                     if(_formKey.currentState.validate()){
                       _formKey.currentState.save();
                     }
-                    Navigator.of(context).pushNamed(UserDetail.id);
+                    Navigator.of(context).pushNamed(VerifyEmail.id);
                   },
                 ),
               ],

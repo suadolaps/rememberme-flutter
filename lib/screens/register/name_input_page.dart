@@ -4,6 +4,7 @@ import 'package:remember_me/screens/register/journey_start.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
+import 'package:remember_me/widgets/top_button.dart';
 
 class NameInput extends StatelessWidget {
   static const String id = 'name_input_screen';
@@ -39,22 +40,8 @@ class NameInput extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 30.0),
-                child: FlatButton(
-                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: kPrimaryBlue,
-                        size: 16.0,
-                      ),
-                      Text(
-                        'BACK',
-                        style: kTopButtonStyle,
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
+                child: TopButton(
+                  buttonName: 'BACK',
                   onPressed: () {
                     Navigator.pop(
                       context,

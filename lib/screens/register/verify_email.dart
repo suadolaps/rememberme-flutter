@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/home/home_overview.dart';
 import 'package:remember_me/screens/register/user_detail.dart';
+import 'package:remember_me/screens/menu_destination.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
@@ -161,7 +163,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
 
                               RoundedButton(
                                 buttonTitle: 'Let\'s go!'.toUpperCase(),
-                                onPressed: (){Navigator.of(context).pop();},
+                                onPressed: (){Navigator.of(context).pushNamed(MenuDestination.id);},
                               )
                             ],
                           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/home/home_overview.dart';
 import 'package:remember_me/screens/login/login_screen.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
 import 'package:remember_me/screens/onboarding/onboarding_2.dart';
@@ -10,6 +11,8 @@ import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/screens/register/user_detail.dart';
 import 'package:remember_me/screens/register/verify_email.dart';
 import 'package:remember_me/screens/splash_page.dart';
+import 'package:remember_me/screens/menu_destination.dart';
+import 'package:remember_me/screens/theme/theme_overview.dart';
 
 void main() => runApp(RememberMe());
 
@@ -33,6 +36,9 @@ class RememberMe extends StatelessWidget {
         AddIntention.id: (context) => AddIntention(),
         UserDetail.id: (context) => UserDetail(),
         VerifyEmail.id: (context) => VerifyEmail(),
+        MenuDestination.id: (context) => MenuDestination(),
+        HomeOverview.id: (context) => HomeOverview(),
+        ThemeOverview.id: (context) => ThemeOverview(),
       },
     );
   }

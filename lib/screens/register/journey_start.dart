@@ -10,7 +10,7 @@ class JourneyStart extends StatelessWidget {
 
   final String name;
 
-  JourneyStart({this.name});
+  JourneyStart({this.name}) : assert(name != null);
 
   @override
   Widget build(BuildContext context) {

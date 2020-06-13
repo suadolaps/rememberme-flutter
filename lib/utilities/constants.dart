@@ -57,4 +57,21 @@ const kInputTextStyle = TextStyle(
   color: kPrimaryBlack,
 );
 
+const kMenuNameStyle = TextStyle(
+  fontSize: 15.0,
+  color: kPrimaryBlue,
+  fontWeight: FontWeight.w800,
+);
+
+const kMenuTitleStyle = TextStyle(
+  fontSize: 28.0,
+  color: kPrimaryBlue,
+  fontWeight: FontWeight.w800,
+);
+
+const kCardLabelStyle = TextStyle(
+  fontSize: 17.0,
+  fontWeight: FontWeight.w700,
+);
+
 const kOnboardingAlignment = TextAlign.center;

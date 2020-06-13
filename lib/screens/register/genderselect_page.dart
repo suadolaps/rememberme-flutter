@@ -4,7 +4,7 @@ import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/widgets/gender_card.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
 import 'package:remember_me/widgets/top_button.dart';
-import 'package:remember_me/models/gender.dart';
+import 'package:remember_me/repositories/models/gender.dart';
 
 
 class GenderSelect extends StatefulWidget {

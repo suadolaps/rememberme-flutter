@@ -43,21 +43,19 @@ class _UserDetailState extends State<UserDetail> {
           ),
           child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
+              shrinkWrap: true,
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: TopButton(
-                    buttonName: 'BACK',
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Intention(),
-                        ),
-                      );
-                    },
-                  ),
+                TopButton(
+                  buttonName: 'BACK',
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Intention(),
+                      ),
+                    );
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0,),
@@ -110,7 +108,7 @@ class _UserDetailState extends State<UserDetail> {
                   child: passwordInput()
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 30.0),
+                  margin: EdgeInsets.only(top: 15.0),
                 ),
                 RoundedButton(
                   buttonTitle: 'SIGN UP',

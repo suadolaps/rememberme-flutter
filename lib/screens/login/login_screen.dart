@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:remember_me/models/field_error.dart';
-import 'package:remember_me/blocs/email/login_screen_bloc.dart';
-import 'package:remember_me/blocs/email/login_screen_event.dart';
-import 'package:remember_me/blocs/email/login_screen_state.dart';
+import 'package:remember_me/repositories/models/field_error.dart';
+import 'package:remember_me/blocs/email/login_screen.dart';
 import 'package:remember_me/screens/onboarding/onboarding_1.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';

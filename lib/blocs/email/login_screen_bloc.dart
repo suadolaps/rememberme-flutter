@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:remember_me/models/field_error.dart';
+import 'package:remember_me/repositories/models/field_error.dart';
 import 'package:remember_me/blocs/email/login_screen_event.dart';
 import 'package:remember_me/blocs/email/login_screen_state.dart';
 import 'package:remember_me/mixins/validation_mixin.dart';

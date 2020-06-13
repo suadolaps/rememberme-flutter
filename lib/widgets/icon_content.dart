@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:remember_me/utilities/constants.dart';
-import 'package:remember_me/utilities/colours.dart';
 
 class IconContent extends StatelessWidget {
   final AssetImage themeIcon;
@@ -14,12 +13,16 @@ class IconContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image(
-          image: themeIcon,
-          fit: BoxFit.fitWidth,
+        Container(
+          alignment: Alignment.center,
           width: 150.0,
-          color: Colors.red,
-          colorBlendMode: BlendMode.multiply,
+          height: 150.0,
+          child: Image(
+            image: themeIcon,
+            fit: BoxFit.contain,
+            height: 120.0,
+            alignment: Alignment.center,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(bottom:8.0,),

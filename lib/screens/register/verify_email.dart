@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:remember_me/screens/home/home_overview.dart';
+import 'package:remember_me/screens/menu/home/home_overview.dart';
 import 'package:remember_me/screens/register/user_detail.dart';
-import 'package:remember_me/screens/menu_destination.dart';
+import 'package:remember_me/screens/menu/menu_destination.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
@@ -121,54 +121,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     context: context,
                     barrierDismissible: false,
                     builder: (BuildContext context) {
-                      return AlertDialog(
-                        elevation: 5.0,
-                        content:  Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 20.0),
-                                child: Text('You made it!'.toUpperCase(),
-                                  style: TextStyle(
-                                      color: kPrimaryBlue,
-                                      fontSize: 30.0,
-                                      fontFamily: 'Muli',
-                                      fontWeight: FontWeight.bold
-                                  ),),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 20.0),
-                                child: Image(
-                                  image: AssetImage('assets/images/register/confetti.png'),
-                                  fit: BoxFit.fitWidth,
-                                  width: 160.0,
-                                ),
-                              ),
-                              Text(
-                                  'You are on your way towards building a relationship with Allah.',
-                                style: kLoginBodyStyle,
-                                textAlign: TextAlign.center,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                                child: Text(
-                                  'Here, you can select a theme you\'d like to begin with. We recommend starting with His Names.',
-                                  style: kLoginBodyStyle,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-
-                              RoundedButton(
-                                buttonTitle: 'Let\'s go!'.toUpperCase(),
-                                onPressed: (){Navigator.of(context).pushNamed(MenuDestination.id);},
-                              )
-                            ],
-                          ),
-                        ),
-                      );
+                      return CongratsAlert();
                     }
                   );
                 },
@@ -183,6 +136,58 @@ class _VerifyEmailState extends State<VerifyEmail> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CongratsAlert extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      elevation: 5.0,
+      content:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Text('You made it!'.toUpperCase(),
+              style: TextStyle(
+                  color: kPrimaryBlue,
+                  fontSize: 30.0,
+                  fontFamily: 'Muli',
+                  fontWeight: FontWeight.bold
+              ),),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Image(
+              image: AssetImage('assets/images/register/confetti.png'),
+              fit: BoxFit.fitWidth,
+              width: 160.0,
+            ),
+          ),
+          Text(
+              'You are on your way towards building a relationship with Allah.',
+            style: kLoginBodyStyle,
+            textAlign: TextAlign.center,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+            child: Text(
+              'Here, you can select a theme you\'d like to begin with. We recommend starting with His Names.',
+              style: kLoginBodyStyle,
+              textAlign: TextAlign.center,
+            ),
+          ),
+
+          RoundedButton(
+            buttonTitle: 'Let\'s go!'.toUpperCase(),
+            onPressed: (){Navigator.of(context).pushNamed(MenuDestination.id);},
+          )
+        ],
       ),
     );
   }

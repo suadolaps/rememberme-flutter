@@ -1,4 +1,4 @@
-import 'package:remember_me/models/field_error.dart';
+import 'package:remember_me/repositories/models/field_error.dart';
 
 class LoginScreenState {
   final bool isBusy;

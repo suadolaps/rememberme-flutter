@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:remember_me/blocs/bottom_navigation/bottom_navigation.dart';
+import 'package:remember_me/blocs/login/login.dart';
+import 'package:remember_me/repositories/favourites_repository.dart';
+import 'package:remember_me/repositories/home_repository.dart';
+import 'package:remember_me/repositories/journal_repository.dart';
 import 'package:remember_me/repositories/models/field_error.dart';
 import 'package:remember_me/blocs/email/login_screen.dart';
-import 'package:remember_me/screens/onboarding/onboarding_1.dart';
+import 'package:remember_me/repositories/profile_repository.dart';
+import 'package:remember_me/repositories/repositories.dart';
+import 'package:remember_me/screens/screens.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 import 'package:remember_me/widgets/top_button.dart';
@@ -18,9 +25,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   LoginScreenBloc _bloc;
   String email;
-  String _password;
   bool hidePassword = true;
   final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -43,138 +50,172 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/register/bg-nearly.png',
-              ),
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.bottomCenter,
-            ),
-          ),
-          child: BlocBuilder<LoginScreenBloc, LoginScreenState>(
-            bloc: this._bloc,
-            builder: (context, state){
-              if (state.isBusy) {
-                return CircularProgressIndicator();
-              }
-              return Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: TopButton(
-                      buttonName: 'BACK',
-                      onPressed: () {
-                        Navigator.pop(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Onboarding1(),
-                          ),
-                        );
-                      }
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Image(
-                      image: AssetImage('assets/images/login/login.png'),
-                      fit: BoxFit.fitWidth,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 24.0, left: 20.0),
-                    child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Welcome back',
-                        style: kLoginTitleStyle,
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 12.0,
-                      right: 15.0,
-                      left: 20.0,
-                    ),
-                    child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Enter your email address and password to sign in and continue on your journey.',
-                        style: kLoginBodyStyle,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 15.0,
-                    ),
-                    child: TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: this._emailController,
-                      style: TextStyle(
-                        color: this._hasEmailError(state) ? Colors.red : kPrimaryBlack,
-                      ),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(0.0),
-                        hintText: 'Enter your email address',
-                        hintStyle: TextStyle(color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,),
-                        labelText: 'Email address',
-                        labelStyle: TextStyle(
-                          color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,
-                        ),
-                        enabledBorder: this._renderBorder(state),
-                        focusedBorder: this._renderBorder(state),
-                        prefixIcon: Icon(
-                          Icons.mail_outline,
-                          color: kPrimaryBlue,
-                          size: 20.0,
-                        ),
-                      ),
-                      onChanged: (value) {
-                        email = value;
-                      },
-                    ),
-                  ),
-                  if (this._hasEmailError(state)) ...[
-                    Text(
-                      this._emailErrorText(state.emailError),
-                      style: TextStyle(color: Colors.red,),
-                      textAlign: TextAlign.left,
-                    ),
-                  ],
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 15.0,
-                      horizontal: 20.0,
-                    ),
-                    child: passwordField(),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 30.0),
-                  ),
-                  RoundedButton(
-                    buttonTitle: 'LOG IN',
-                    onPressed: () => this._bloc.add(LoginScreenEventSubmit(this._emailController.text),),
-                  ),
-                  FlatButton(
-                    child: Text(
-                      'Forgot Password'.toUpperCase(),
-                      style: kBottomButtonStyle,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              );
-            },
-          ),
+    _onLoginButtonPressed() {
+      BlocProvider.of<LoginBloc>(context).add(
+        LoginButtonPressed(
+          email: _emailController.text,
+          password: _passwordController.text,
         ),
+      );
+
+    }
+
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state is LoginFailure) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('${state.error}'),
+            backgroundColor: Colors.redAccent,
+          ),);
+        }
+      },
+      child: BlocBuilder<LoginBloc, LoginState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/images/register/bg-nearly.png',
+                    ),
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.bottomCenter,
+                  ),
+                ),
+                child: BlocBuilder<LoginScreenBloc, LoginScreenState>(
+                  bloc: this._bloc,
+                  builder: (context, state){
+                    if (state.isBusy) {
+                      return CircularProgressIndicator();
+                    }
+                    return Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30.0),
+                          child: TopButton(
+                              buttonName: 'BACK',
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Image(
+                            image: AssetImage('assets/images/login/login.png'),
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 24.0, left: 20.0),
+                          child: Container(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              'Welcome back',
+                              style: kLoginTitleStyle,
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 12.0,
+                            right: 15.0,
+                            left: 20.0,
+                          ),
+                          child: Container(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              'Enter your email address and password to sign in and continue on your journey.',
+                              style: kLoginBodyStyle,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0,
+                            vertical: 15.0,
+                          ),
+                          child: TextField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: this._emailController,
+                            style: TextStyle(
+                              color: this._hasEmailError(state) ? Colors.red : kPrimaryBlack,
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(0.0),
+                              hintText: 'Enter your email address',
+                              hintStyle: TextStyle(color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,),
+                              labelText: 'Email address',
+                              labelStyle: TextStyle(
+                                color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,
+                              ),
+                              enabledBorder: this._renderBorder(state),
+                              focusedBorder: this._renderBorder(state),
+                              prefixIcon: Icon(
+                                Icons.mail_outline,
+                                color: kPrimaryBlue,
+                                size: 20.0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        if (this._hasEmailError(state)) ...[
+                          Text(
+                            this._emailErrorText(state.emailError),
+                            style: TextStyle(color: Colors.red,),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15.0,
+                            horizontal: 20.0,
+                          ),
+                          child: passwordField(),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 30.0),
+                        ),
+                        RoundedButton(
+                          buttonTitle: 'LOG IN',
+                          onPressed: () {
+                            this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
+                            state is! LoginInProgress ? _onLoginButtonPressed() : null;
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BlocProvider<BottomNavigationBloc>(
+                                  create: (context) {
+                                    return BottomNavigationBloc(homeRepository: HomeRepository(),
+                                      journalRepository: JournalRepository(),
+                                    favouritesRepository: FavouritesRepository(),
+                                    profileRepository: ProfileRepository(),
+                                    themeRepository: ThemeRepository())
+                                      ..add(PageTapped(index: 2));
+                                  },
+                                  child: MenuDestination(),
+                                ),),
+                            );
+                          },
+                        ),
+                        FlatButton(
+                          child: Text(
+                            'Forgot Password'.toUpperCase(),
+                            style: kBottomButtonStyle,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -233,9 +274,7 @@ class _LoginScreenState extends State<LoginScreen> {
               size: 20.0,
             ),
           ),),
-      onChanged: (value) {
-        _password = value;
-      },
+      controller: _passwordController,
     );
   }
 }

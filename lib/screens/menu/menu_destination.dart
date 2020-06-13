@@ -39,7 +39,7 @@ class MenuDestination extends StatelessWidget {
                 return FavouritesOverview(text: state.text,);
               }
               if (state is ProfileOverviewLoaded) {
-                return ProfileOverview(text: state.text,);
+                return ProfileOverview(pageTitle: state.text,);
               }
               return Container();
             },

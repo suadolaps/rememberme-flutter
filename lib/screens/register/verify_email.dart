@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remember_me/screens/menu/home/home_overview.dart';
-import 'package:remember_me/screens/register/user_detail.dart';
-import 'package:remember_me/screens/menu/menu_destination.dart';
+import 'package:remember_me/screens/screens.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/utilities/constants.dart';
 import 'package:remember_me/widgets/rounded_button.dart';

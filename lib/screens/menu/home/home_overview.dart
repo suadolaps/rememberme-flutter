@@ -9,6 +9,7 @@ class HomeOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.pinkAccent,
       body: Center(
         child: Text('My number is: $number'),
       ),

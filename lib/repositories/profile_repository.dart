@@ -5,7 +5,7 @@ class ProfileRepository {
     // simulate real data fetching
     await Future.delayed(Duration(milliseconds: 600));
     // store dummy data
-    _data = 'Profile Page';
+    _data = 'Profile';
   }
 
   String get data => _data;

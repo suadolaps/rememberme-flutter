@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:remember_me/repositories/models/field_error.dart';
 import 'package:remember_me/blocs/email/login_screen_event.dart';
 import 'package:remember_me/blocs/email/login_screen_state.dart';
-import 'package:remember_me/mixins/validation_mixin.dart';
+import 'package:remember_me/mixins/validators.dart';
 
 class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> with ValidationMixin {
 

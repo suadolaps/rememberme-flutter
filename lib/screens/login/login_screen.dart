@@ -35,12 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _bloc.close();
-    super.dispose();
-  }
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -140,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: TextField(
                             keyboardType: TextInputType.emailAddress,
+                            autocorrect: false,
                             controller: this._emailController,
                             style: TextStyle(
                               color: this._hasEmailError(state) ? Colors.red : kPrimaryBlack,
@@ -274,8 +269,17 @@ class _LoginScreenState extends State<LoginScreen> {
               size: 20.0,
             ),
           ),),
+      autocorrect: false,
       controller: _passwordController,
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _bloc.close();
+    super.dispose();
   }
 }
 

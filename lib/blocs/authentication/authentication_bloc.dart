@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:bloc/bloc.dart';
 
 import 'package:meta/meta.dart';
 import 'package:remember_me/blocs/authentication/authentication_event.dart';
 import 'package:remember_me/blocs/authentication/authentication_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:remember_me/repositories/repositories.dart';
+
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final UserRepository userRepository;
@@ -30,13 +32,15 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
     if (event is AuthenticationLoggedIn) {
       yield AuthenticationInProgress();
-      await userRepository.persistToken(event.token);
+      await userRepository.persistToken(
+        user: event.user
+      );
       yield AuthenticationSuccess();
     }
 
     if (event is AuthenticationLoggedOut) {
       yield AuthenticationInProgress();
-      await userRepository.deleteToken();
+      await userRepository.deleteToken(id: 0);
       yield AuthenticationFailure();
     }
   }

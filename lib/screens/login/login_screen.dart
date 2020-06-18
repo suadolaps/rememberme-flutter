@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:remember_me/blocs/authentication/authentication.dart';
 import 'package:remember_me/blocs/bottom_navigation/bottom_navigation.dart';
 import 'package:remember_me/blocs/login/login.dart';
-import 'package:remember_me/repositories/favourites_repository.dart';
-import 'package:remember_me/repositories/home_repository.dart';
-import 'package:remember_me/repositories/journal_repository.dart';
 import 'package:remember_me/repositories/models/field_error.dart';
 import 'package:remember_me/blocs/email/login_screen.dart';
-import 'package:remember_me/repositories/profile_repository.dart';
 import 'package:remember_me/repositories/repositories.dart';
 import 'package:remember_me/screens/screens.dart';
 import 'package:remember_me/utilities/colours.dart';
@@ -51,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
           password: _passwordController.text,
         ),
       );
-
     }
 
     return BlocListener<LoginBloc, LoginState>(
@@ -179,21 +175,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
                             state is! LoginInProgress ? _onLoginButtonPressed() : null;
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BlocProvider<BottomNavigationBloc>(
-                                  create: (context) {
-                                    return BottomNavigationBloc(homeRepository: HomeRepository(),
-                                      journalRepository: JournalRepository(),
-                                    favouritesRepository: FavouritesRepository(),
-                                    profileRepository: ProfileRepository(),
-                                    themeRepository: ThemeRepository())
-                                      ..add(PageTapped(index: 2));
-                                  },
-                                  child: MenuDestination(),
-                                ),),
-                            );
+                            if(state is AuthenticationSuccess){
+
+                            }
                           },
                         ),
                         FlatButton(
@@ -272,14 +256,6 @@ class _LoginScreenState extends State<LoginScreen> {
       autocorrect: false,
       controller: _passwordController,
     );
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    _bloc.close();
-    super.dispose();
   }
 }
 

@@ -3,6 +3,7 @@ import 'package:remember_me/screens/onboarding/onboarding_2.dart';
 import 'package:remember_me/screens/register/name_input_page.dart';
 import 'package:remember_me/widgets/gender_card.dart';
 import 'package:remember_me/widgets/arrow_button.dart';
+import 'package:remember_me/widgets/rounded_button.dart';
 import 'package:remember_me/widgets/top_button.dart';
 import 'package:remember_me/repositories/models/gender.dart';
 
@@ -22,7 +23,11 @@ class _GenderSelectState extends State<GenderSelect> {
     return Scaffold(
       floatingActionButton: ArrowButton(
         onPress: () {
-          Navigator.of(context).pushNamed(NameInput.id);
+          if (selectedGender == Gender.male || selectedGender == Gender.female) {
+            Navigator.of(context).pushNamed(NameInput.id);
+          } else {
+            return;
+          }
         },
       ),
       body: Padding(

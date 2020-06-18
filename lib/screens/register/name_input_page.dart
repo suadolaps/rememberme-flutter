@@ -16,13 +16,17 @@ class NameInput extends StatelessWidget {
     return Scaffold(
       floatingActionButton: ArrowButton(
         onPress: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
+          if (name != null) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
                 builder: (context) => JourneyStart(
-                      name: name,
-                    ),),
-          );
+                  name: name,
+                ),),
+            );
+          } else {
+              return;
+          }
         },
       ),
       body: Padding(

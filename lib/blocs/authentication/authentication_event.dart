@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:remember_me/repositories/models/models.dart';
+
 
 abstract class AuthenticationEvent extends Equatable {
   const AuthenticationEvent();
@@ -11,15 +13,25 @@ abstract class AuthenticationEvent extends Equatable {
 class AuthenticationStarted extends AuthenticationEvent {}
 
 class AuthenticationLoggedIn extends AuthenticationEvent {
-  final String token;
+//  final String token;
+//
+//  const AuthenticationLoggedIn({@required this.token});
+//
+//  @override
+//  List<Object> get props => [token];
+//
+//  @override
+//  String toString() => 'AuthenticationLoggedIn { token : $token}';
 
-  const AuthenticationLoggedIn({@required this.token});
+  final User user;
+
+  const AuthenticationLoggedIn({@required this.user});
 
   @override
-  List<Object> get props => [token];
+  List<Object> get props => [user];
 
   @override
-  String toString() => 'AuthenticationLoggedIn { token : $token}';
+  String toString() => 'LoggedIn { user: $user.username.toString() }';
 
 }
 

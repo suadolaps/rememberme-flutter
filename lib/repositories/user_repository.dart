@@ -1,29 +1,45 @@
 import 'package:meta/meta.dart';
+import 'package:remember_me/dao/user_dao.dart';
+import 'package:remember_me/repositories/api/login_api_client.dart';
+import 'package:remember_me/repositories/models/models.dart';
 
 class UserRepository {
-  Future<String> authenticate({
-  @required String email, @required String password,
+  final userDao = UserDao();
+
+  Future<User> authenticate({
+    @required String email,
+    @required String password,
+  }) async {
+    UserLogin userLogin = UserLogin(
+      email: email,
+      password: password,
+    );
+    Token token = await getToken(userLogin);
+    User user = User(
+      id: 0,
+      email: email,
+      token: token.token,
+    );
+    return user;
+  }
+
+  Future<void> deleteToken({
+    @required int id
 }) async {
-    await Future.delayed(Duration(seconds: 1));
-    return 'token';
-  }
-
-  Future<void> deleteToken() async {
     /// delete from keystore / keychain
-    await Future.delayed(Duration(seconds: 1));
-    return;
+    await userDao.deleteUser(id);
   }
 
-  Future<void> persistToken(String token) async {
-    /// write to keystore / keychain
-    await Future.delayed(Duration(seconds: 1));
-    return;
+  Future<void> persistToken({
+    @required User user
+  }) async {
+    /// write token with user to db
+    await userDao.createUser(user);
   }
 
   Future<bool> hasToken() async {
-    /// read from keystore / keychain
-    await Future.delayed(Duration(seconds: 1));
-    return false;
+    bool result = await userDao.checkUser(0);
+    return result;
   }
 
   Future<void> signUp({String email, String password}) async {

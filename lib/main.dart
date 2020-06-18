@@ -1,13 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:remember_me/blocs/authentication/authentication.dart';
 import 'package:remember_me/blocs/bottom_navigation/bottom_navigation.dart';
 import 'package:remember_me/blocs/login/login.dart';
+import 'package:remember_me/blocs/themes/theme.dart';
+import 'package:remember_me/repositories/api/theme_api_client.dart';
 import 'package:remember_me/repositories/repositories.dart';
 import 'package:remember_me/simple_bloc_delegate.dart';
-import 'screens/screens.dart';
+import 'screens/screens.dart'; 
 
 void main() {
   BlocSupervisor.delegate = SimpleBlocDelegate();
@@ -22,6 +25,11 @@ void main() {
 
 class RememberMe extends StatelessWidget {
   final UserRepository userRepository;
+  final ThemeRepository themeRepository = ThemeRepository(
+    themeApiClient: ThemeApiClient(
+      httpClient: http.Client(),
+    ),
+  );
 
   RememberMe({Key key, @required this.userRepository}) : super(key:key);
 
@@ -34,7 +42,7 @@ class RememberMe extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationSuccess) {
-            return HomeOverview();
+            print('hi!');
           }
           if (state is AuthenticationFailure) {
             return Onboarding1(userRepository: userRepository,);
@@ -72,7 +80,11 @@ class RememberMe extends StatelessWidget {
             ),
             child: MenuDestination(),),
         HomeOverview.id: (context) => HomeOverview(),
-        ThemeOverview.id: (context) => ThemeOverview(),
+        ThemeOverview.id: (context) => BlocProvider(
+          create: (context) => ThemeBloc(
+            themeRepository: themeRepository,
+          ),
+          child: ThemeOverview(),),
         FavouritesOverview.id: (context) => FavouritesOverview(),
         ProfileOverview.id: (context) => ProfileOverview(),
         JournalOverview.id: (context) => JournalOverview(),

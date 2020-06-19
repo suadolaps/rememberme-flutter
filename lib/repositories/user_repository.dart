@@ -5,6 +5,7 @@ import 'package:remember_me/repositories/models/models.dart';
 
 class UserRepository {
   final userDao = UserDao();
+  final loginApiClient = LoginApiClient();
 
   Future<User> authenticate({
     @required String email,
@@ -14,7 +15,7 @@ class UserRepository {
       email: email,
       password: password,
     );
-    Token token = await getToken(userLogin);
+    Token token = await loginApiClient.getToken(userLogin);
     User user = User(
       id: 0,
       email: email,

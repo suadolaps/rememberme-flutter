@@ -38,7 +38,7 @@ void main() {
 
     group('LoginButtonPressed', (){
       blocTest('emits [LoginInitial, LoginInProgress] when LoginButtonPressed is added and authenticate succeeds',
-        build: () {
+        build: () async {
           when(userRepository.authenticate(email: 'test@mail.com', password: 'password234')).thenAnswer(
               (_) => Future.value(
                 User(
@@ -48,23 +48,22 @@ void main() {
                 ),
               ),
           );
-//          return loginBloc;
+          return loginBloc;
         },
         act: (bloc) => bloc.add(LoginButtonPressed(email: 'test@mail.com', password: 'password234')),
         expect: [
-          LoginInitial(),
           LoginInProgress(),
+          LoginInitial(),
         ],
       );
 
-      blocTest('emits [LoginInitial, LoginInProgress, LoginFailure] when LoginButtonPressed is added and authenticate fails',
-        build: () {
+      blocTest('emits [LoginInProgress, LoginFailure] when LoginButtonPressed is added and authenticate fails',
+        build: () async {
           when(userRepository.authenticate(email: 'test@mail.com', password: 'password234')).thenThrow('oops');
-//          return loginBloc;
+          return loginBloc;
         },
         act: (bloc) => bloc.add(LoginButtonPressed(email: 'test@mail.com', password: 'password234')),
         expect: [
-          LoginInitial(),
           LoginInProgress(),
           LoginFailure(
             error: 'oops'

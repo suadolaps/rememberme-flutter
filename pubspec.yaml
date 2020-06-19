@@ -13,6 +13,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   bloc: ^4.0.0
+  hydrated_bloc: ^4.1.1
   flutter_bloc: ^4.0.1
   equatable: ^1.2.0
   meta: ^1.1.8
@@ -23,6 +24,10 @@ dependencies:
   path_provider: ^1.6.11
   mockito: ^4.1.1
   bloc_test: ^5.1.0
+  sensors: ^0.4.2+2
+  geolocator: ^5.3.2+2
+  shared_preferences: ^0.5.7+3
+  json_annotation: ^3.0.1
 
   auto_size_text: ^2.1.0
   email_validator: ^1.0.0
@@ -30,6 +35,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  json_serializable: ^3.3.0
 
 
 

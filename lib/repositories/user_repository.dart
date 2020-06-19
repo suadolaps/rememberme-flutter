@@ -1,11 +1,12 @@
 import 'package:meta/meta.dart';
 import 'package:remember_me/dao/user_dao.dart';
-import 'package:remember_me/repositories/api/login_api_client.dart';
+import 'package:remember_me/repositories/api/api_clients.dart';
 import 'package:remember_me/repositories/models/models.dart';
 
 class UserRepository {
   final userDao = UserDao();
   final loginApiClient = LoginApiClient();
+  final registerApiClient = RegisterApiClient();
 
   Future<User> authenticate({
     @required String email,
@@ -45,6 +46,12 @@ class UserRepository {
 
   Future<void> signUp({String email, String password}) async {
     /// implement authentication for signup
+    UserLogin newUser = UserLogin(
+          email: email,
+          password: password,
+        );
+    UserLogin user = await registerApiClient.createUser(newUser);
+    print(user);
   }
 
   Future<void> logOut() async {

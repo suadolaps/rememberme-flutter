@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 abstract class AuthenticationState extends Equatable {
-//  const AuthenticationState();
+  const AuthenticationState();
 
   @override
   List<Object> get props => [];

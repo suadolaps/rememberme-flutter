@@ -12,6 +12,8 @@ class TopButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FlatButton(
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      splashColor: Colors.transparent,
+      highlightColor: kTertiaryBlue.withOpacity(0.6),
       child: Row(
         children: <Widget>[
           Icon(

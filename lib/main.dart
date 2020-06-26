@@ -9,6 +9,7 @@ import 'package:remember_me/blocs/login/login.dart';
 import 'package:remember_me/blocs/themes/theme.dart';
 import 'package:remember_me/repositories/api/theme_api_client.dart';
 import 'package:remember_me/repositories/repositories.dart';
+import 'package:remember_me/screens/menu/profile/settings/settings_overview.dart';
 import 'package:remember_me/simple_bloc_delegate.dart';
 import 'screens/screens.dart'; 
 
@@ -98,6 +99,7 @@ class RememberMe extends StatelessWidget {
         FavouritesOverview.id: (context) => FavouritesOverview(),
         ProfileOverview.id: (context) => ProfileOverview(),
         JournalOverview.id: (context) => JournalOverview(),
+        SettingsOverview.id: (context) => SettingsOverview(),
       },
     );
   }

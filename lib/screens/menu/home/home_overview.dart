@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:remember_me/utilities/constants.dart';
@@ -35,11 +36,14 @@ class _HomeOverviewState extends State<HomeOverview> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
           child: Container(
+            alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('My number is: ${widget.number}'),
-                SizedBox(height: 15,),
+                Padding(
+                  padding: const EdgeInsets.all(20.0,),
+                  child: Container(child: Text('My number is: ${widget.number}')),
+                ),
                 RoundedButton(
                   buttonTitle: 'MY POSITION',
                   onPressed: () async {
@@ -48,13 +52,15 @@ class _HomeOverviewState extends State<HomeOverview> {
                           myPosition = position;
                           return myPosition;
                         });
-                    positionStream.cancel();
+//                    positionStream.cancel();
                   },
                 ),
                 Text(
-                    'Latitude: ${myPosition != null ? myPosition.latitude.toString() : '0'},'
-                        ' Longitude: ${myPosition != null ? myPosition.longitude.toString() : '0'}',
-                  style: kMainTitleStyle,
+                    'Latitude: ${myPosition != null ? myPosition.latitude.round().toString() : '0'}'
+                        ' Longitude: ${myPosition != null ? myPosition.longitude.round().toString() : '0'}',
+                  style: kMainTitleStyle.copyWith(
+                    fontSize: 24,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],

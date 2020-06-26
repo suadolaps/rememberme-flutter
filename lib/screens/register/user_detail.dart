@@ -115,8 +115,8 @@ class _UserDetailState extends State<UserDetail> {
                   onPressed: () {
                     if(_formKey.currentState.validate()){
                       _formKey.currentState.save();
+                      Navigator.of(context).pushNamed(VerifyEmail.id);
                     }
-                    Navigator.of(context).pushNamed(VerifyEmail.id);
                   },
                 ),
               ],

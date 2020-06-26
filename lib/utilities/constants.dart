@@ -74,4 +74,10 @@ const kCardLabelStyle = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
+const kProfileNameStyle = TextStyle(
+  fontSize: 22.0,
+  color: kPrimaryBlack,
+  fontWeight: FontWeight.w400,
+);
+
 const kOnboardingAlignment = TextAlign.center;

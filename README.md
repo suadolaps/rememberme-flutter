@@ -12,7 +12,7 @@ An overview of the design for individual screens can be found [here](https://xd.
 ## Demo 
 A screencast of the app running can be found [here]().
 
-## Architecture 
+## Architecture 
 The app architecture detailing how the mobile client interacts with the backend can be found [here](https://app.lucidchart.com/documents/edit/5d6cd919-3d82-4ada-b7e9-5c2cfc588227/0_0).
 
 ## Set up

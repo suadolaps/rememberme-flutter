@@ -50,151 +50,153 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     }
 
-    return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
-        if (state is LoginFailure) {
-          Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text('${state.error}'),
-            backgroundColor: Colors.redAccent,
-          ),);
-        }
-      },
-      child: BlocBuilder<LoginBloc, LoginState>(
-        builder: (context, state) {
-          return Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/register/bg-nearly.png',
+    return Builder(
+      builder: (context) => BlocListener<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state is LoginFailure) {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text('${state.error}'),
+              backgroundColor: Colors.redAccent,
+            ),);
+          }
+        },
+        child: BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/register/bg-nearly.png',
+                      ),
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.bottomCenter,
                     ),
-                    fit: BoxFit.fitWidth,
-                    alignment: Alignment.bottomCenter,
                   ),
-                ),
-                child: BlocBuilder<LoginScreenBloc, LoginScreenState>(
-                  bloc: this._bloc,
-                  builder: (context, state){
-                    if (state.isBusy) {
-                      return CircularProgressIndicator();
-                    }
-                    return Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: TopButton(
-                              buttonName: 'BACK',
-                              onPressed: () {
-                                Navigator.pop(context);
-                              }
+                  child: BlocBuilder<LoginScreenBloc, LoginScreenState>(
+                    bloc: this._bloc,
+                    builder: (context, state){
+                      if (state.isBusy) {
+                        return CircularProgressIndicator();
+                      }
+                      return Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 30.0),
+                            child: TopButton(
+                                buttonName: 'BACK',
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                }
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Image(
-                            image: AssetImage('assets/images/login/login.png'),
-                            fit: BoxFit.fitWidth,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Image(
+                              image: AssetImage('assets/images/login/login.png'),
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 24.0, left: 20.0),
-                          child: Container(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              'Welcome back',
-                              style: kLoginTitleStyle,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 24.0, left: 20.0),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'Welcome back',
+                                style: kLoginTitleStyle,
+                                textAlign: TextAlign.left,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 12.0,
+                              right: 15.0,
+                              left: 20.0,
+                            ),
+                            child: Container(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                'Enter your email address and password to sign in and continue on your journey.',
+                                style: kLoginBodyStyle,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 15.0,
+                            ),
+                            child: TextField(
+                              keyboardType: TextInputType.emailAddress,
+                              autocorrect: false,
+                              controller: this._emailController,
+                              style: TextStyle(
+                                color: this._hasEmailError(state) ? Colors.red : kPrimaryBlack,
+                              ),
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.all(0.0),
+                                hintText: 'Enter your email address',
+                                hintStyle: TextStyle(color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,),
+                                labelText: 'Email address',
+                                labelStyle: TextStyle(
+                                  color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,
+                                ),
+                                enabledBorder: this._renderBorder(state),
+                                focusedBorder: this._renderBorder(state),
+                                prefixIcon: Icon(
+                                  Icons.mail_outline,
+                                  color: kPrimaryBlue,
+                                  size: 20.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          if (this._hasEmailError(state)) ...[
+                            Text(
+                              this._emailErrorText(state.emailError),
+                              style: TextStyle(color: Colors.red,),
                               textAlign: TextAlign.left,
                             ),
+                          ],
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 15.0,
+                              horizontal: 20.0,
+                            ),
+                            child: passwordField(),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 12.0,
-                            right: 15.0,
-                            left: 20.0,
+                          Container(
+                            margin: EdgeInsets.only(top: 30.0),
                           ),
-                          child: Container(
-                            alignment: Alignment.topLeft,
+                          RoundedButton(
+                            buttonTitle: 'LOG IN',
+                            onPressed: () {
+                              this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
+                              state is! LoginInProgress ? _onLoginButtonPressed() : null;
+                              if(state is AuthenticationSuccess){
+
+                              }
+                            },
+                          ),
+                          FlatButton(
                             child: Text(
-                              'Enter your email address and password to sign in and continue on your journey.',
-                              style: kLoginBodyStyle,
+                              'Forgot Password'.toUpperCase(),
+                              style: kBottomButtonStyle,
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0,
-                            vertical: 15.0,
-                          ),
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            autocorrect: false,
-                            controller: this._emailController,
-                            style: TextStyle(
-                              color: this._hasEmailError(state) ? Colors.red : kPrimaryBlack,
-                            ),
-                            decoration: InputDecoration(
-                              contentPadding: EdgeInsets.all(0.0),
-                              hintText: 'Enter your email address',
-                              hintStyle: TextStyle(color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,),
-                              labelText: 'Email address',
-                              labelStyle: TextStyle(
-                                color: this._hasEmailError(state) ? Colors.red : kTertiaryGrey,
-                              ),
-                              enabledBorder: this._renderBorder(state),
-                              focusedBorder: this._renderBorder(state),
-                              prefixIcon: Icon(
-                                Icons.mail_outline,
-                                color: kPrimaryBlue,
-                                size: 20.0,
-                              ),
-                            ),
-                          ),
-                        ),
-                        if (this._hasEmailError(state)) ...[
-                          Text(
-                            this._emailErrorText(state.emailError),
-                            style: TextStyle(color: Colors.red,),
-                            textAlign: TextAlign.left,
+                            onPressed: () {},
                           ),
                         ],
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 15.0,
-                            horizontal: 20.0,
-                          ),
-                          child: passwordField(),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 30.0),
-                        ),
-                        RoundedButton(
-                          buttonTitle: 'LOG IN',
-                          onPressed: () {
-                            this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
-                            state is! LoginInProgress ? _onLoginButtonPressed() : null;
-                            if(state is AuthenticationSuccess){
-
-                            }
-                          },
-                        ),
-                        FlatButton(
-                          child: Text(
-                            'Forgot Password'.toUpperCase(),
-                            style: kBottomButtonStyle,
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

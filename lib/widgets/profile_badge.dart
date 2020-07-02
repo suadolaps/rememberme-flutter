@@ -11,7 +11,7 @@ class Badge extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
-          color: kTertiaryBlue.withOpacity(0.7),
+          color: kSecondaryPink.withOpacity(0.7),
           borderRadius: BorderRadius.circular(20.0,)
       ),
       child: icon,

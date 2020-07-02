@@ -24,7 +24,7 @@ class ProfileSubMenu extends StatelessWidget {
               padding: const EdgeInsets.only(right: 20.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: kSecondaryPink,
+                  color: kTertiaryBlue.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(16.0),
                 ),
                 padding: EdgeInsets.all(10.0),

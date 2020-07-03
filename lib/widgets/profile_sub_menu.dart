@@ -42,12 +42,6 @@ class ProfileSubMenu extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40.0),
-              child: Icon(Icons.arrow_forward_ios,
-                size: 19.0,
-                color: kPrimaryBlue,),
-            )
           ],
         ),
       ),

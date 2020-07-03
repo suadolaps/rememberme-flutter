@@ -92,19 +92,19 @@ class ProfileOverview extends StatelessWidget {
                     Badge(
                       icon: Icon(
                         Icons.all_inclusive,
-                        size: 40.0,
+                        size: 35.0,
                       ),
                     ),
                     Badge(
                       icon: Icon(
                         Icons.album,
-                        size: 40.0,
+                        size: 35.0,
                       ),
                     ),
                     Badge(
                       icon: Icon(
                         Icons.color_lens,
-                        size: 40.0,
+                        size: 35.0,
                       ),
                     ),
                   ],
@@ -114,21 +114,21 @@ class ProfileOverview extends StatelessWidget {
                 ProfileSubMenu(
                   menuTitle: 'Achievements',
                   onPressed: (){},
-                  icon: Icon(Icons.star_border,
+                  icon: Icon(Icons.star,
                     color: kPrimaryBlue,
                     size: 30.0,),
                 ),
                 ProfileSubMenu(
                   menuTitle: 'Buddies',
                   onPressed: (){},
-                  icon: Icon(Icons.people_outline,
+                  icon: Icon(Icons.people,
                     color: kPrimaryBlue,
                     size: 30.0,),
                 ),
                 ProfileSubMenu(
                   menuTitle: 'Letters to Allah',
                   onPressed: (){},
-                  icon: Icon(CupertinoIcons.folder,
+                  icon: Icon(Icons.folder_special,
                     color: kPrimaryBlue,
                     size: 30.0,),
                 ),

@@ -176,8 +176,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
                               state is! LoginInProgress ? _onLoginButtonPressed() : null;
-                              if(state is AuthenticationSuccess){
-
+                              if (state is AuthenticationSuccess) {
+                                print('Hello');
                               }
                             },
                           ),

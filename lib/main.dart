@@ -43,17 +43,17 @@ class RememberMe extends StatelessWidget {
       home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (context, state) {
           if (state is AuthenticationSuccess) {
-            return BlocProvider<BottomNavigationBloc>(
-              create: (context) {
-                return BottomNavigationBloc(homeRepository: HomeRepository(),
-                    journalRepository: JournalRepository(),
-                    favouritesRepository: FavouritesRepository(),
-                    profileRepository: ProfileRepository(),
-                    themeRepository: ThemeRepository())
-                  ..add(PageTapped(index: 2));
-              },
-              child: MenuDestination(),
-            );
+              return BlocProvider<BottomNavigationBloc>(
+                create: (context) {
+                  return BottomNavigationBloc(homeRepository: HomeRepository(),
+                      journalRepository: JournalRepository(),
+                      favouritesRepository: FavouritesRepository(),
+                      profileRepository: ProfileRepository(),
+                      themeRepository: ThemeRepository())
+                    ..add(PageTapped(index: 2));
+                },
+                child: MenuDestination(),
+              );
           }
           if (state is AuthenticationFailure) {
             return Onboarding1(userRepository: userRepository,);

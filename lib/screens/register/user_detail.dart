@@ -17,7 +17,8 @@ class UserDetail extends StatefulWidget {
 class _UserDetailState extends State<UserDetail> {
   final _formKey = GlobalKey<FormState>();
   String _email;
-  String _password;
+  String _firstPassword;
+  String _confirmPassword;
   bool hidePassword = true;
 
   void _togglePasswordVisibility() {
@@ -105,7 +106,46 @@ class _UserDetailState extends State<UserDetail> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20.0,
                     vertical: 15.0,),
-                  child: passwordInput()
+                  child: TextFormField(
+                    keyboardType: TextInputType.text,
+                    obscureText: hidePassword,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(0.0),
+                      hintText: 'Confirm your password',
+                      errorStyle: TextStyle(
+                        fontSize: 15.0,
+                      ),
+                      labelText: 'Confirm Password',
+                      labelStyle: TextStyle(
+                        color: kTertiaryGrey,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 0.5,
+                          color: kPrimaryBlue,
+                        ),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        color: kPrimaryBlue,
+                        size: 20.0,
+                      ),
+                      suffixIcon: GestureDetector(
+                        onTap: () {
+                          _togglePasswordVisibility();
+                        },
+                        child: Icon(
+                          hidePassword ? Icons.visibility_off : Icons.visibility,
+                          color: hidePassword ? kSecondaryGrey : kPrimaryBlue,
+                          size: 20.0,
+                        ),
+                      ),),
+                    textInputAction: TextInputAction.done,
+                    validator: (password2){
+                      return password2.isEmpty ? 'Confirm password is required' : validationEqual(password2, _firstPassword) ? null : 'Passwords do not match';
+                    },
+                    onSaved: (password2) => _confirmPassword = password2,
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 15.0),
@@ -115,6 +155,8 @@ class _UserDetailState extends State<UserDetail> {
                   onPressed: () {
                     if(_formKey.currentState.validate()){
                       _formKey.currentState.save();
+                    }
+                    if (_confirmPassword == _firstPassword) {
                       Navigator.of(context).pushNamed(VerifyEmail.id);
                     }
                   },
@@ -134,6 +176,9 @@ class _UserDetailState extends State<UserDetail> {
         contentPadding: EdgeInsets.all(0.0),
         hintText: 'Enter your email address',
         labelText: 'Email address',
+        errorStyle: TextStyle(
+          fontSize: 15.0,
+        ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             width: 0.5,
@@ -169,6 +214,9 @@ class _UserDetailState extends State<UserDetail> {
         labelStyle: TextStyle(
           color: kTertiaryGrey,
         ),
+        errorStyle: TextStyle(
+          fontSize: 15.0,
+        ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
             width: 0.5,
@@ -199,8 +247,16 @@ class _UserDetailState extends State<UserDetail> {
         else
           return null;
       },
-      onSaved: (password) => _password = password,
+      onSaved: (password) => _firstPassword = password,
     );
+  }
+
+  bool validationEqual(String currentValue, String checkValue) {
+    if (currentValue == checkValue) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

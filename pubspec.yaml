@@ -49,6 +49,7 @@ flutter:
     - assets/images/login/
     - assets/images/resources/
     - assets/images/themes/
+    - assets/images/journal/
 
 
   fonts:

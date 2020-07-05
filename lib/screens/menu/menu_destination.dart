@@ -33,7 +33,7 @@ class MenuDestination extends StatelessWidget {
                 return HomeOverview(number: state.number);
               }
               if (state is JournalOverviewLoaded) {
-                return JournalOverview(text: state.text);
+                return JournalOverview(pageTitle: state.text);
               }
               if (state is FavouritesOverviewLoaded) {
                 return FavouritesOverview(text: state.text,);

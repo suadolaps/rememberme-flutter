@@ -23,11 +23,12 @@ class ThemeSelected extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/themes/theme-bg.png'),
-                fit: BoxFit.cover,
+                image: AssetImage('assets/images/register/bg-intention.png'),
+                fit: BoxFit.contain
               ),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
@@ -47,8 +48,7 @@ class ThemeSelected extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Expanded(
                   child: Column(
                     children: <Widget>[
                     Container(
@@ -71,7 +71,7 @@ class ThemeSelected extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(top: 40.0),
+                      padding: EdgeInsets.only(top: 28.0),
                       child: RoundedButton(
                         buttonTitle: 'BEGIN',
                         onPressed: onPressed,

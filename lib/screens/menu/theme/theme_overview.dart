@@ -176,7 +176,7 @@ class ThemeOverview extends StatelessWidget {
                                     image: AssetImage('assets/images/themes/sub-menu/reliance.png'),
                                     width: 220.0,
                                   ),
-                                  bodyText: 'The Prophet, peace be upon him, said: “If you relied on Allah as you should rely on Him, He would provide you sustenance as He provides for the birds; they go out in the morning with empty stomachs and come back in the evening with full stomachs.”',
+                                  bodyText: 'The Prophet (pbuh) said: “If you relied on Allah as you should rely on Him, He would provide you sustenance as He provides for the birds; they go out in the morning with empty stomachs and come back in the evening with full stomachs.”',
                                   bodyCaption: 'At-Tirmidhi',
                                   onPressed: (){},
                                 ),

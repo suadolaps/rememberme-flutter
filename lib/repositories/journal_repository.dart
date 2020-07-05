@@ -5,7 +5,7 @@ class JournalRepository {
     // simulate real data fetching
     await Future.delayed(Duration(milliseconds: 600));
     // store dummy data
-    _data = 'Journal Page';
+    _data = 'Journal Entries';
   }
 
   String get data => _data;

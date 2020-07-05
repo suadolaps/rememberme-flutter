@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:remember_me/screens/menu/theme/theme_selected.dart';
 import 'package:remember_me/widgets/icon_content.dart';
 import 'package:remember_me/widgets/reusable_card.dart';
 import 'package:remember_me/utilities/colours.dart';
@@ -37,32 +38,65 @@ class ThemeOverview extends StatelessWidget {
                   ),
                   alignment: Alignment.centerLeft,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    ReusableCard(
-                      cardChild: IconContent(
-                        themeIcon: AssetImage(
-                            'assets/images/themes/his-names.png'),
-                        themeName: 'His Names',
-                        colour: kSecondaryWhite,
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      ReusableCard(
+                        cardChild: IconContent(
+                          themeIcon: AssetImage(
+                              'assets/images/themes/his-names.png'),
+                          themeName: 'His Names',
+                          colour: kSecondaryWhite,
+                        ),
+                        colour: kSecondaryGreen,
+                        onPress: ()  {
+                          Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ThemeSelected(
+                                  themeName: 'His Names',
+                                  themeIcon: Image(
+                                    image: AssetImage('assets/images/themes/sub-menu/his-names.png'),
+                                    width: 220.0,
+                                  ),
+                                  bodyText: 'He is Allah, the Creator, the Inventor, the Fashioner; to Him belong the best names. Whatever is in the heavens and earth is exalting Him. And He is the Exalted in Might, the Wise.',
+                                  bodyCaption: 'Surah al-Hashr 59:24',
+                                  onPressed: (){},
+                                ),
+                          ),
+                          );
+                        },
                       ),
-                      colour: kSecondaryGreen,
-                      onPress: ()  {
-
-                      },
-                    ),
-                    ReusableCard(
-                      cardChild: IconContent(
-                        themeIcon: AssetImage(
-                            'assets/images/themes/forgive.png'),
-                        themeName: 'Forgiveness \n& \n Repentance',
-                        colour: kSecondaryWhite,
+                      ReusableCard(
+                        cardChild: IconContent(
+                          themeIcon: AssetImage(
+                              'assets/images/themes/forgive.png'),
+                          themeName: 'Forgiveness',
+                          colour: kSecondaryWhite,
+                        ),
+                        colour: kSecondaryGreen,
+                        onPress: () {
+                          Navigator.push(context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  ThemeSelected(
+                                    themeName: 'Forgiveness',
+                                    themeIcon: Image(
+                                      image: AssetImage('assets/images/themes/sub-menu/forgive.png'),
+                                      width: 220.0,
+                                    ),
+                                    bodyText: 'Verily, Allah loves those who repent and those who purify themselves.',
+                                    bodyCaption: 'Surah al-Baqarah 2:222',
+                                    onPressed: (){},
+                                  ),
+                            ),
+                          );
+                        },
                       ),
-                      colour: kSecondaryGreen,
-                      onPress: () {},
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +109,23 @@ class ThemeOverview extends StatelessWidget {
                         colour: kPrimaryBlack,
                       ),
                       colour: kSecondaryPink,
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ThemeSelected(
+                                  themeName: 'Prayer',
+                                  themeIcon: Image(
+                                    image: AssetImage('assets/images/themes/sub-menu/prayer.png'),
+                                    width: 220.0,
+                                  ),
+                                  bodyText: 'The Prophet, peace be upon him, said: “The key to Paradise is prayer; the key to prayer is wudhu (ablution).”',
+                                  bodyCaption: 'Musnad Ahmad',
+                                  onPressed: (){},
+                                ),
+                          ),
+                        );
+                      },
                     ),
                     ReusableCard(
                       cardChild: IconContent(
@@ -85,7 +135,23 @@ class ThemeOverview extends StatelessWidget {
                         colour: kPrimaryBlack,
                       ),
                       colour: kSecondaryPink,
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ThemeSelected(
+                                  themeName: 'Patience',
+                                  themeIcon: Image(
+                                    image: AssetImage('assets/images/themes/sub-menu/patience.png'),
+                                    width: 220.0,
+                                  ),
+                                  bodyText: 'The one who practices Sabr will never be deprived of success, even though it may take a long time.',
+                                  bodyCaption: 'Imam Ali',
+                                  onPressed: (){},
+                                ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -100,7 +166,23 @@ class ThemeOverview extends StatelessWidget {
                         colour: kSecondaryWhite,
                       ),
                       colour: kSecondaryGreen,
-                      onPress: () {},
+                      onPress: () {
+                        Navigator.push(context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                ThemeSelected(
+                                  themeName: 'Reliance',
+                                  themeIcon: Image(
+                                    image: AssetImage('assets/images/themes/sub-menu/reliance.png'),
+                                    width: 220.0,
+                                  ),
+                                  bodyText: 'The Prophet, peace be upon him, said: “If you relied on Allah as you should rely on Him, He would provide you sustenance as He provides for the birds; they go out in the morning with empty stomachs and come back in the evening with full stomachs.”',
+                                  bodyCaption: 'At-Tirmidhi',
+                                  onPressed: (){},
+                                ),
+                          ),
+                        );
+                      },
                     ),
 
                   ],

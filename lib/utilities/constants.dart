@@ -80,4 +80,15 @@ const kProfileNameStyle = TextStyle(
   fontWeight: FontWeight.w400,
 );
 
+const kThemeBodyStyle = TextStyle(
+  color: kPrimaryBlack,
+  fontSize: 20.0,
+  height: 1.75,
+);
+
+const kThemeCaptionStyle = TextStyle(
+  color: kPrimaryBlue,
+  fontSize: 19.0,
+);
+
 const kOnboardingAlignment = TextAlign.center;

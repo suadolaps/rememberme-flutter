@@ -16,7 +16,7 @@ class IconContent extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           width: 150.0,
-          height: 150.0,
+          height: 140.0,
           child: Image(
             image: themeIcon,
             fit: BoxFit.contain,

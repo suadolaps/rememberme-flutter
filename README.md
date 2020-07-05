@@ -10,7 +10,7 @@ Other features include:
 An overview of the design for individual screens can be found [here](https://xd.adobe.com/view/871acea6-4249-45a6-ae88-c27273fa5292-d249/). 
 
 ## Demo 
-A screencast of the app running can be found [here]().
+A screencast of the app running can be found [here](https://drive.google.com/file/d/1xvQwSBJHmaQasr6lHt0fBJpsy_lYjiIA/view?usp=sharing).
 
 ## Architecture 
 The app architecture detailing how the mobile client interacts with the backend can be found [here](https://app.lucidchart.com/documents/edit/5d6cd919-3d82-4ada-b7e9-5c2cfc588227/0_0).

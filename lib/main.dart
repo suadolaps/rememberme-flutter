@@ -22,7 +22,8 @@ void main() {
       return AuthenticationBloc(userRepository: userRepository)
           ..add(AuthenticationStarted());
     },
-      child: RememberMe(userRepository: userRepository),),);
+      child: RememberMe(userRepository: userRepository
+      ),),);
 }
 
 class RememberMe extends StatelessWidget {

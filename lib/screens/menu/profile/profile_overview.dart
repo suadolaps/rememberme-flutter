@@ -16,6 +16,8 @@ class ProfileOverview extends StatelessWidget {
 
   ProfileOverview({this.pageTitle}) : super();
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +35,36 @@ class ProfileOverview extends StatelessWidget {
                     splashColor: Colors.transparent,
                     highlightColor: kTertiaryBlue.withOpacity(0.6),
                     onPressed: () {
-                      BlocProvider.of<AuthenticationBloc>(context).add(AuthenticationLoggedOut());
-                      Navigator.of(context).pushNamed(Onboarding1.id);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: Text('Are you sure you want to logout?',
+                                textAlign: TextAlign.left,),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text('CANCEL',
+                                  style: TextStyle(
+                                    color: kTertiaryGrey,
+                                  ),),
+                                  onPressed: (){
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                FlatButton(
+                                  child: Text('LOGOUT',
+                                  style: TextStyle(
+                                    color: kPrimaryBlue,
+                                  ),),
+                                  onPressed: (){
+                                    BlocProvider.of<AuthenticationBloc>(context).add(AuthenticationLoggedOut());
+                                    Navigator.of(context).pushNamed(Onboarding1.id);
+                                  },
+                                )
+                              ],
+                            );
+                          }
+                      );
                     },
                     child: Text(
                       'LOG OUT',

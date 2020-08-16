@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:remember_me/blocs/authentication/authentication.dart';
-import 'package:remember_me/blocs/bottom_navigation/bottom_navigation.dart';
 import 'package:remember_me/blocs/login/login.dart';
 import 'package:remember_me/repositories/models/field_error.dart';
 import 'package:remember_me/blocs/email/login_screen.dart';
-import 'package:remember_me/repositories/repositories.dart';
-import 'package:remember_me/screens/screens.dart';
 import 'package:remember_me/utilities/colours.dart';
 import 'package:remember_me/widgets/rounded_button.dart';
 import 'package:remember_me/widgets/top_button.dart';
@@ -176,9 +173,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               this._bloc.add(LoginScreenEventSubmit(this._emailController.text),);
                               state is! LoginInProgress ? _onLoginButtonPressed() : null;
-                              if (state is AuthenticationSuccess) {
-                                print('Hello');
-                              }
                             },
                           ),
                           FlatButton(
@@ -225,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
   Widget passwordField() {
-    return TextField(
+    return TextFormField(
       obscureText: hidePassword,
       decoration: InputDecoration(
           contentPadding: EdgeInsets.all(0.0),
